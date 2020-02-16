@@ -1,37 +1,70 @@
-def roll_call_dwarves(array)
-  position = []
-  line_order = []
-  array.each_index{|x| position.push(x+1)}
-  count = 0
-    while count != array.length
-      line_order.push("#{position[count]}. #{array[count]}")
-      count+=1
-    end
-    joined_line_order = line_order.join(" ")
-    puts joined_line_order
+dwarves = ["Doc", "Dopey", "Bashful", "Grumpy"]
+planeteer_calls = ["earth", "wind", "fire", "water", "heart"]
+call_screams = ["bo", "bam", "boom", "bazam", "powzer"]
 
+def roll_call_dwarves(array)
+  i = 0 
+  while i < array.length 
+    puts "#{i + 1}. #{array[i]}"
+    i += 1 
+  end 
 end
+
+roll_call_dwarves(dwarves)
+
+
 
 def summon_captain_planet(array)
-  array.map{|element| element.capitalize + "!"}
+  nu_array = []
+  i = 0 
+  while i < array.length 
+    nu_array << array[i].capitalize + "!"
+    i += 1 
+  end 
+  nu_array
 end
 
-def long_planeteer_calls(array)
-  array.any? { |element| element.length > 4 }
-#   array2 = []
-#   array.map{|element| array2.push(element.length)}
-#   binding.pry
-#   array2
-#   if array2.find {|i| i >= 4 } 
-#   return true
-#   if array2.all? {|i| i <= 4} 
-#   return false
-# end
-# end
+summon_captain_planet(planeteer_calls)
+
+
+def long_planeteer_calls(array) 
+  i = 0 
+  if  array.any? {|i| i.length > 4}
+    return true
+  else 
+    return false
+  i = i + 1
+  end 
 end
 
+long_planeteer_calls(call_screams)
+
+
+cheese_types = ["cheddar", "gouda", "camembert"]
+snacks = ["crackers", "gouda", "thyme"]
+
+
+# This is the learn.co method that wants the cheese array inside the actual method
 def find_the_cheese(array)
-  # the array below is here to help
   cheese_types = ["cheddar", "gouda", "camembert"]
-  cheese_types.map{|element| return array.include?(element) }
+    array.find do |type|
+    cheese_types.include?(type)
+  end 
 end
+
+find_the_cheese(snacks)
+
+
+
+# This is a much better way cause the cheese array isn't included in the method.
+cheese_types = ["cheddar", "gouda", "camembert"]
+snacks = ["crackers", "gouda", "thyme"]
+
+def find_the_cheese2(array, array2)
+  cheese_types = array2
+    array.find do |type|
+    cheese_types.include?(type)
+  end 
+end
+
+find_the_cheese2(snacks, cheese_types)
